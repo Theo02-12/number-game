@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 body{
     height: 100vh;
@@ -27,19 +27,24 @@ input, button{
     border-radius: 5px;
     padding: 10px;
     position: relative;
+    border: 1px solid black;
 }
-#top{
-    font-weight: bold;
-}
+
 h1{
     height: 10%;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
     text-align: center;
     border-bottom: 1px solid black;
-    font-weight: lighter;
+    font-weight:normal;
     
 }
 #rejouer{
     display: none;
     position: absolute;
     bottom: -80px;
+}
+h3{
+    font-size: 20px;
+    font-weight: normal;
 }

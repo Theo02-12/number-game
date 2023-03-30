@@ -9,10 +9,12 @@ function startGame() {
 
     const btntestNumber = document.querySelector('#testNumber')
     btntestNumber.addEventListener('click', testNumber)
-    let i = 2;
+    let i = 1;
 
     var textWin = document.createElement("h1")
-    var br = document.createElement("br")
+    var textAttempt = document.createElement("h3")
+    let br = document.createElement("br")
+    
     container.append(textWin)
 
     function testNumber() {
@@ -24,18 +26,29 @@ function startGame() {
 
 
         if (selectNumber == resultRandom) {
-            textWin.innerHTML = "bravo c'est gagné";
+            textWin.innerHTML = "Gagné :)";
             playAgain.style.display = "block";
 
         } else {
-            textWin.innerHTML += `dommage ${i} essais restant`
-            textWin.append(br)
-
+            if(i == 1){
+               textWin.innerHTML += `${i}er essai` 
+            }else{
+                textWin.innerHTML += `${i}ème essai`
+            }
+            if(selectNumber > resultRandom){
+                textAttempt.innerHTML = `${selectNumber}? .. c'est moins`
+            }else if(selectNumber == resultRandom){
+                textAttempt.innerHTML = "";
+            }else{
+               textAttempt.innerHTML = `${selectNumber}? .. c'est plus` 
+            }
+            
+            textWin.append(br, textAttempt)
         }
-        
-        if (i > 0) {
-            i--;
-        } else if (i == 0) {
+
+        if (i < 3) {
+            i++;
+        } else if (i == 3) {
             playAgain.style.display = "block";
         }
     }
