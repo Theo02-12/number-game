@@ -45,6 +45,27 @@ h1{
     bottom: -80px;
 }
 h3{
-    font-size: 20px;
+    font-size: 15px;
     font-weight: normal;
+}
+#btn-content{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+#level-btn{
+    display: flex;
+    justify-content: center;
+}
+#level-btn button:nth-child(1){
+    background-color: blue;
+    color: white;
+}
+#level-btn button:nth-child(2){
+    background-color: orange;
+    color: white;
+}
+#level-btn button:nth-child(3){
+    background-color: red;
+    color: white;
 }

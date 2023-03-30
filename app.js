@@ -1,11 +1,45 @@
-function startGame() {
-
-    const random = (max, min) => {
+var random = (max, min) => {
         return Math.floor(Math.random() * (max - min) - min)
     }
+var resultRandom = random(11, 0)
 
-    var resultRandom = random(11, 0)
-    console.log(resultRandom)
+
+const start = document.querySelector('#start');
+const check = document.querySelector('#testNumber');
+
+function startGame() {
+    // gestion de la difficulté 
+    const easy = document.querySelector('#easy')
+    easy.addEventListener('click', easyBtn);
+    const medium = document.querySelector('#medium')
+    medium.addEventListener('click', mediumBtn);
+    const hard = document.querySelector('#hard')
+    hard.addEventListener('click', hardBtn);
+    
+    // boutton mode easy
+    function easyBtn() {
+        resultRandom = random(11, 0)
+        let attempt = 0;
+        
+    }
+    // boutton mode medium
+    function mediumBtn() {
+        resultRandom = random(51, 0)
+        console.log(resultRandom)
+        let attempt = 0;
+    }
+    // boutton mode hard
+    function hardBtn() {
+        resultRandom = random(101, 0)
+        console.log(resultRandom)
+        let attempt = 0;
+    }
+    
+    
+    
+
+    
+    
 
     const btntestNumber = document.querySelector('#testNumber')
     btntestNumber.addEventListener('click', testNumber)
@@ -14,7 +48,7 @@ function startGame() {
     var textWin = document.createElement("h1")
     var textAttempt = document.createElement("h3")
     let br = document.createElement("br")
-    
+
     container.append(textWin)
 
     function testNumber() {
@@ -30,19 +64,19 @@ function startGame() {
             playAgain.style.display = "block";
 
         } else {
-            if(i == 1){
-               textWin.innerHTML += `${i}er essai` 
-            }else{
+            if (i == 1) {
+                textWin.innerHTML += `${i}er essai`
+            } else {
                 textWin.innerHTML += `${i}ème essai`
             }
-            if(selectNumber > resultRandom){
+            if (selectNumber > resultRandom) {
                 textAttempt.innerHTML = `${selectNumber}? .. c'est moins`
-            }else if(selectNumber == resultRandom){
+            } else if (selectNumber == resultRandom) {
                 textAttempt.innerHTML = "";
-            }else{
-               textAttempt.innerHTML = `${selectNumber}? .. c'est plus` 
+            } else {
+                textAttempt.innerHTML = `${selectNumber}? .. c'est plus`
             }
-            
+
             textWin.append(br, textAttempt)
         }
 
@@ -50,16 +84,21 @@ function startGame() {
             i++;
         } else if (i == 3) {
             playAgain.style.display = "block";
+            start.disabled = true;
+            check.disabled = true;
         }
+
+        
     }
 
     const playAgain = document.querySelector('#rejouer')
     playAgain.addEventListener('click', rejouer);
-    
+
     function rejouer() {
         location.reload();
     }
 }
+
 
 
 
