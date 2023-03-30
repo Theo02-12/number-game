@@ -32,9 +32,7 @@ function startGame() {
             textWin.append(br)
 
         }
-
-
-
+        
         if (i > 0) {
             i--;
         } else if (i == 0) {
