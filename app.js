@@ -8,6 +8,7 @@ var resultRandom = random(11, 0)
 const start = document.querySelector('#start');
 const check = document.querySelector('#testNumber');
 
+// commencer le jeu
 function startGame() {
     // gestion de la difficulté 
     const easy = document.querySelector('#easy')
@@ -17,7 +18,7 @@ function startGame() {
     const hard = document.querySelector('#hard')
     hard.addEventListener('click', hardBtn);
 
-
+    // titre avec les difficultés
     const top = document.querySelector('#top');
     const easyDifficult = '(entre 1 et 10)';
     const mediumDifficult = '(entre 1 et 50)';
@@ -26,25 +27,25 @@ function startGame() {
     // boutton mode easy
     function easyBtn() {
         resultRandom = random(11, 0)
-        console.log(resultRandom)
         top.append(easyDifficult)
+        medium.disabled = true;
+        hard.disabled = true;
     }
     // boutton mode medium
     function mediumBtn() {
         resultRandom = random(51, 0)
         top.append(mediumDifficult)
-        console.log(resultRandom)
+        easy.disabled = true;
+        hard.disabled = true;
+
     }
     // boutton mode hard
     function hardBtn() {
         resultRandom = random(101, 0)
-        console.log(resultRandom)
         top.append(hardDifficult)
+        medium.disabled = true;
+        easy.disabled = true;
     }
-
-
-
-
 
 
     // boutton pour tester le chiffre
@@ -80,11 +81,15 @@ function startGame() {
                 textWin.innerHTML += `${i}ème essai`
             }
             if (selectNumber > resultRandom) {
-                textAttempt.innerHTML = `${selectNumber}? .. c'est moins`
+                setTimeout(function(){
+                  textAttempt.innerHTML = `${selectNumber}? .. c'est moins`;  
+                }, 500);   
             } else if (selectNumber == resultRandom) {
                 textAttempt.innerHTML = "";
             } else {
-                textAttempt.innerHTML = `${selectNumber}? .. c'est plus`
+                setTimeout(function(){
+                    textAttempt.innerHTML = `${selectNumber}? .. c'est plus`;  
+                  }, 500);
             }
 
             textWin.append(br, textAttempt)
@@ -92,11 +97,11 @@ function startGame() {
         // nombre d'essais 
         if (i < 3) {
             i++;
-        } else if (i == 3) {
+        } else if (i == 2) {
             playAgain.style.display = "block";
             start.disabled = true;
             check.disabled = true;
-        }else if (i == 2) {
+        } else if (i == 3) {
             playAgain.style.display = "block";
             start.disabled = true;
             check.disabled = true;
