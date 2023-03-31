@@ -29,7 +29,7 @@ function startGame() {
         resultRandom = random(11, 0)
         top.append(easyDifficult)
         medium.disabled = true;
-        hard.disabled = true;console.log(resultRandom);
+        hard.disabled = true;
     }
     // boutton mode medium
     function mediumBtn() {
@@ -46,7 +46,7 @@ function startGame() {
         top.append(hardDifficult)
         medium.disabled = true;
         easy.disabled = true;
-        i = 2;
+        i = i + 1;
         i++;
     }
 
@@ -57,6 +57,7 @@ function startGame() {
     //variable pour le nombre d'essai
     let i = 1;
     //
+    // creation elements dans la page html 
     var textWin = document.createElement("h1")
     var textAttempt = document.createElement("h3")
     let br = document.createElement("br")
@@ -66,8 +67,6 @@ function startGame() {
     // fonction pour tester l'essai
     function testNumber() {
 
-
-        console.log(resultRandom)
         const selectNumber = document.querySelector('#chiffre').value;
 
 
@@ -78,13 +77,7 @@ function startGame() {
             check.disabled = true;
 
         } else {
-            if (i == 1 || i == 3) {
-                textWin.innerHTML += `${i} essai`
-            }else if(i == 2){
-                textWin.innerHTML += `${i}ème essai`
-            } else if(i == 3) {
-                textWin.innerHTML += `${i}ème essai`
-            }
+            
             if (selectNumber > resultRandom) {
                 setTimeout(function () {
                     textAttempt.innerHTML = `${selectNumber}? .. c'est moins`;
@@ -96,6 +89,14 @@ function startGame() {
                     textAttempt.innerHTML = `${selectNumber}? .. c'est plus`;
                 }, 500);
             }
+            
+            if (i == 1) {
+                textWin.innerHTML += `${i}er essai`
+            }else if(i == 2){
+                textWin.innerHTML += `${i}ème essai`
+            } else if(i == 3) {
+                 textWin.innerHTML = `Dommage c'était ${resultRandom}`;
+            }
 
             textWin.append(br, textAttempt)
         }
@@ -103,6 +104,7 @@ function startGame() {
         if (i < 3) {
             i++;
         } else if (i == 3) {
+            
             playAgain.style.display = "block";
             start.disabled = true;
             check.disabled = true;

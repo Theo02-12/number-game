@@ -77,3 +77,83 @@ h3{
     background-color: red;
     color: white;
 }
+@media (max-width: 728px) {
+    body{
+        flex-direction: column;
+    }
+    #container{
+        margin-top: 20px;
+    }
+}
+
+
+#easy, #medium, #hard{
+    position: relative;
+}
+#easy::before{
+    width: 120px;
+    line-height: 20px;
+    content: "3 essais" "\A" " 1 to 10 number" "\A" ;
+    white-space: pre;
+    position: absolute;
+    color: black;
+    top: -90px;
+    left: -70px;
+    opacity: 0;
+    transition: opacity .5s linear;
+    border: 1px dashed black;
+}
+#easy:hover::before{
+    opacity: 1;
+}
+#medium::before{
+    width: 120px;
+    line-height: 20px;
+    content: "2 essais" "\A" " 1 to 50 number" "\A" ;
+    white-space: pre;
+    position: absolute;
+    color: black;
+    top: -90px;
+    left: -25px;
+    opacity: 0;
+    transition: opacity .5s linear;
+    border: 1px dashed black;
+}
+#medium:hover::before{
+    opacity: 1;
+}
+#hard::before{
+    width: 120px;
+    line-height: 20px;
+    content: "1 seul essai" "\A" " 1 to 100 number" "\A" ;
+    white-space: pre;
+    position: absolute;
+    color: black;
+    top: -90px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity .5s linear;
+    border: 1px dashed black;
+}
+#hard:hover::before{
+    opacity: 1;
+}
+.instructions{
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    border: 1px solid blue;
+    padding: 25px;
+}
+.instructions p{
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-align: center;
+}
+.instructions li{
+    padding: 5px;
+}
+.instructions i{
+    color: rgb(134, 159, 27);
+    font-size: 25px;
+}
