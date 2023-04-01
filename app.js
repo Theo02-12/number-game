@@ -2,7 +2,7 @@
 var random = (max, min) => {
     return Math.floor(Math.random() * (max - min) - min)
 }
-var resultRandom = random(11, 0)
+var resultRandom = random(11, 1)
 
 // id des bouttons jouer et tester
 const start = document.querySelector('#start');
@@ -28,7 +28,7 @@ function startGame() {
 
     // boutton mode easy
     function easyBtn() {
-        resultRandom = random(11, 0)
+        resultRandom = random(11, 1)
         top.append(easyDifficult)
         medium.disabled = true;
         hard.disabled = true;
@@ -36,7 +36,7 @@ function startGame() {
     }
     // boutton mode medium
     function mediumBtn() {
-        resultRandom = random(51, 0)
+        resultRandom = random(51, 1)
         top.append(mediumDifficult)
         easy.disabled = true;
         hard.disabled = true;
@@ -45,7 +45,7 @@ function startGame() {
     }
     // boutton mode hard
     function hardBtn() {
-        resultRandom = random(101, 0)
+        resultRandom = random(101, 1)
         top.append(hardDifficult)
         medium.disabled = true;
         easy.disabled = true;
@@ -86,9 +86,8 @@ function startGame() {
             setTimeout(() => {
                 textAttempt.innerHTML = `<p>${selectNumber}? c'est moins</p>`
             }, "500")
-        } else if (i == 3) {
+        } else if (i >= 3) {
             textAttempt.innerHTML = '';
-            textWin.innerHTML = `Dommage c'était ${resultRandom}`;
         } else {
             setTimeout(() => {
                 textAttempt.innerHTML = `<p>${selectNumber}? c'est plus</p>`
@@ -99,6 +98,8 @@ function startGame() {
             textWin.innerHTML += `${i}er essai`
         } else if (i == 2) {
             textWin.innerHTML += `${i}ème essai`
+        }else if(i >= 3){
+           textWin.innerHTML = `Dommage c'était ${resultRandom}`; 
         }
 
         textWin.append(br, textAttempt)
