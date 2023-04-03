@@ -32,7 +32,6 @@ function startGame() {
         top.append(easyDifficult)
         medium.disabled = true;
         hard.disabled = true;
-        console.log(resultRandom);
     }
     // boutton mode medium
     function mediumBtn() {
@@ -41,7 +40,6 @@ function startGame() {
         easy.disabled = true;
         hard.disabled = true;
         i++;
-        console.log(resultRandom);
     }
     // boutton mode hard
     function hardBtn() {
@@ -51,7 +49,6 @@ function startGame() {
         easy.disabled = true;
         i = i + 1;
         i++;
-        console.log(resultRandom);
     }
 
 
@@ -72,40 +69,40 @@ function startGame() {
     function testNumber() {
 
         const selectNumber = document.querySelector('#chiffre').value;
-        console.log(i);
- // SI LE JOUEUR TROUVE LE CHIFFRE :
+
+        // SI LE JOUEUR TROUVE LE CHIFFRE :
         if (selectNumber == resultRandom) {
             textWin.innerHTML = "Gagné :)";
             playAgain.style.display = "block";
             start.disabled = true;
             check.disabled = true;
 
-        }else{
+        } else {
 
             if (selectNumber > resultRandom) {
-            setTimeout(() => {
-                textAttempt.innerHTML = `<p>${selectNumber}? c'est moins</p>`
-            }, "500")
-        } else if (i >= 3) {
-            textAttempt.innerHTML = '';
-        } else {
-            setTimeout(() => {
-                textAttempt.innerHTML = `<p>${selectNumber}? c'est plus</p>`
-            }, "500")
-        }
+                setTimeout(() => {
+                    textAttempt.innerHTML = `<p>${selectNumber}? c'est moins</p>`
+                }, "500")
+            } else if (i >= 3) {
+                textAttempt.innerHTML = '';
+            } else {
+                setTimeout(() => {
+                    textAttempt.innerHTML = `<p>${selectNumber}? c'est plus</p>`
+                }, "500")
+            }
 
-        if (i == 1) {
-            textWin.innerHTML += `${i}er essai`
-        } else if (i == 2) {
-            textWin.innerHTML += `${i}ème essai`
-        }else if(i >= 3){
-           textWin.innerHTML = `Dommage c'était ${resultRandom}`; 
-        }
+            if (i == 1) {
+                textWin.innerHTML += `${i}er essai`
+            } else if (i == 2) {
+                textWin.innerHTML += `${i}ème essai`
+            } else if (i >= 3) {
+                textWin.innerHTML = `Dommage c'était ${resultRandom}`;
+            }
 
-        textWin.append(br, textAttempt)
+            textWin.append(br, textAttempt)
         }
-// SI LE JOUEUR NE TROUVE PAS LE CHIFFRE
-        
+        // SI LE JOUEUR NE TROUVE PAS LE CHIFFRE
+
 
         // nombre d'essais 
         if (i < 3) {
